@@ -11,9 +11,17 @@ cp .env.example .env
 2. **Run Sail without having PHP/Composer installed:**
 ``` bash
 # This command downloads dependencies using Docker
+# Linux and Mac
 docker run --rm \
     -u "$(id -u):$(id -g)" \
     -v "$(pwd):/var/www/html" \
+    -w /var/www/html \
+    laravelsail/php84-composer:latest \
+    composer install --ignore-platform-reqs
+    
+# Windows
+docker run --rm -v \
+    "${PWD}:/var/www/html" \
     -w /var/www/html \
     laravelsail/php84-composer:latest \
     composer install --ignore-platform-reqs
