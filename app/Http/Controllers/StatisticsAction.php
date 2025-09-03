@@ -16,7 +16,7 @@ class StatisticsAction extends Controller
                 [
                     'message' => 'No statistics found'
                 ],
-                404
+                400
             );
         }
 
@@ -24,6 +24,7 @@ class StatisticsAction extends Controller
             [
                 'data' => [
                     'top_queries' => $statistics->top_queries,
+                    'top_gets' => $statistics->top_gets,
                     'average_response_time_ms' => $statistics->average_response_time,
                     'most_popular_hour' => $statistics->popular_hour,
                     'computed_at' => $statistics->computed_at->toISOString(),
